@@ -26,7 +26,7 @@ with open(path.join(here, 'LICENSE.txt'), encoding='utf-8') as l:
 
 
 setup(name='amaretto',
-	version='0.0.0.3',
+	version='0.0.0.4',
 	description='Azure management tools by the1bit.',
 	long_description=long_description + "\n" + license_description,
 	url='https://github.com/the1bit/amaretto/tree/master/amaretto',

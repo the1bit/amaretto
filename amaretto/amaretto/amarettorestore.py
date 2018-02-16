@@ -34,12 +34,10 @@ def getOSDiskVHDName(filePath):
 			if len(vhdName) > 0:
 				# It is not empty
 				## Return with result
-				print vhdName
 				return vhdName
 			else:
 				# It is empty
 				## Return with error
-				print "error"
 				return "error"
 
 # FUNCTION Get Data Disk name from backup files
@@ -74,12 +72,10 @@ def getDataDiskVHDName(filePath):
 			if len(vhdName) > diskCount:
 				# It is not empty
 				## Return with result
-				print vhdName
 				return vhdName
 			else:
 				# It is empty
 				## Return with error
-				print "error"
 				return "error"
 
 # FUNCTION gives back storage uri according to Azure cloud name
@@ -87,11 +83,9 @@ def storageUriFromCloud(cloudName = "AzureGermanCloud"):
 	# Check whether this is MCD
 	if cloudName == "AzureGermanCloud":
 		# If MCD it gives back the right uri
-		print "blob.core.cloudapi.de"
 		return "blob.core.cloudapi.de"
 	else:
 		# If MCI it gives back the right uri
-		print "blob.core.windows.net"
 		return "blob.core.windows.net"
 
 # FUNCTION get datadisk information for required lun
@@ -175,10 +169,9 @@ def getFileName(command):
 	# Try to format in JSON
 	try:
 		# If success it give back as result
-		print json.loads(result)[0]["name"]
 		return json.loads(result)[0]["name"]
 	except:
 		# If it is not valid json result it gives back an error
-		print "error"
 		return "error"
 
+"Restore module has been loaded"
