@@ -22,6 +22,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="amaretto.py" />
+    <Compile Include="amaretto\amarettorestore.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="amaretto\__init__.py" />
     <Compile Include="setup.py" />
   </ItemGroup>
@@ -33,7 +36,7 @@
     <Content Include="setup.cfg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="amaretto\" />
+    <Folder Include="S:\Development\git\Repos\amaretto\amaretto\amaretto\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
