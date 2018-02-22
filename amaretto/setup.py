@@ -8,6 +8,8 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
+import sys
+
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
@@ -18,15 +20,17 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 with open(path.join(here, 'LICENSE.txt'), encoding='utf-8') as l:
 	license_description = l.read()
 
+
+## Versin of the current package
+currentVersion = "0.0.2.0"
+sys.stdout.write("ammaretto: " + currentVersion + '\n')
+
+
 # Arguments marked as "Required" below must be included for upload to PyPI.
 # Fields marked as "Optional" may be commented out.
 
-
-
-
-
 setup(name='amaretto',
-	version='0.0.2.0',
+	version=currentVersion,
 	description='Azure management tools by the1bit.',
 	long_description=long_description + "\n" + license_description,
 	url='https://github.com/the1bit/amaretto/tree/master/amaretto',

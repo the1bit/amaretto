@@ -33,21 +33,21 @@ def azureLogin():
 	subscriptionId = ""
 
 	# Get subscriptionCloud for login
-	message = "Please type the subscriptionCloud for Azure subsription (eg. 'AzureGermanCloud'): "
+	message = "Please type the subscriptionCloud for Azure subscription (eg. 'AzureGermanCloud'): "
 	if PVER == 2:
 		subscriptionCloud = raw_input(message)
 	else:
 		subscriptionCloud = input(message)
 
 	# Get subscriptionLocation for login
-	message = "Please type the subscriptionLocation for Azure subsription (eg. 'germanycentral'): "
+	message = "Please type the subscriptionLocation for Azure subscription (eg. 'germanycentral'): "
 	if PVER == 2:
 		subscriptionLocation = raw_input(message)
 	else:
 		subscriptionLocation = input(message)
 
 	# Get subscriptionId for login
-	message = "Please type the subscriptionId for Azure subsription: "
+	message = "Please type the subscriptionId for Azure subscription: "
 	if PVER == 2:
 		subscriptionId = raw_input(message)
 	else:
