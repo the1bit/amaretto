@@ -83,7 +83,7 @@ All steps are developed in this module for each and every restore steps such as 
 	>>> vmName = "thisismyserver-2"
 	>>> resourceGroup = "thisismyrg"
 	>>> location = "westeurope"
-	>>> sourceStorageAccount = "the1bit910restorehot"
+	>>> sourceStorageAccount = "thisismystorage"
 	>>> sourceSecretKey = "d22j/rr+a7br7LW6KDKV8KZkO2wCIe3m0MTKVr3Tt9B9NMZZsYxny8bvWvPwUGgZpDkE8gyAePjWCVu2IZ4LYw=="
 	>>> sourceContainer = "vhd6bdda0e88c88408299246c468784656546a"
 	>>> 
