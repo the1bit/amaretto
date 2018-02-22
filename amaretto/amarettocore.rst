@@ -11,6 +11,9 @@ Change log - version 1.1.0.0
 
 Requirements
 ------------
+
+* Linux OS
+
 You have to install before the first usage the followings:
 
 * Python (2.7 or 3.4)
@@ -37,7 +40,7 @@ Functions
 * Note:
 	It does not set the default subscription (if you have more than 1 subscription for same account). For this operation you can use the *defaultSubscription* function.
 * Example: 
-	>>> azureLogin()
+	>>> amaretto.amarettocore.azureLogin()
 
 
 **defaultSubscription(subscriptionID)**
@@ -48,7 +51,4 @@ Functions
 * Output: *True* if the operation is success and *False* if something went wrong.
 * Note:
 * Example: 
-	>>> defaultSubscription("57a1gdff-e67c-5432-9876-gdh18j5j4677")	
-
-
-
+	>>> amaretto.amarettocore.defaultSubscription("57a1gdff-e67c-5432-9876-gdh18j5j4677")	

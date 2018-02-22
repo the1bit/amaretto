@@ -9,6 +9,9 @@ Change log - version 1.2.0.0
 
 Requirements
 ------------
+
+* Linux OS
+
 You have to install before the first usage the followings:
 
 * Python (2.7 or 3.4)
@@ -55,7 +58,7 @@ All steps are developed in this module for each and every restore steps such as 
 	>>> secretKey = "d22j/rr+a7br7LW6KDKV8KZkO2wCIe3m0MTKVr3Tt9B9NMZZsYxny8bvWvPwUGgZpDkE8gyAePjWCVu2IZ4LYw=="
 	>>> sourceContainer = "vhd6bdda0e88c88408299246c468784656546a"
 	>>>
-	>>> restoreUnmanagedDiskFromVhd(vmName, resourceGroup, location, storageAccount, secretKey, sourceContainer)
+	>>> amaretto.amarettorestore.restoreUnmanagedDiskFromVhd(vmName, resourceGroup, location, storageAccount, secretKey, sourceContainer)
 
 
 **restoreManagedDiskFromVhd(vmName, resourceGroup, location, sourceStorageAccount, sourceSecretKey, sourceContainer, managedDiskAccountType = "Standard_LRS")**
@@ -84,4 +87,4 @@ All steps are developed in this module for each and every restore steps such as 
 	>>> sourceSecretKey = "d22j/rr+a7br7LW6KDKV8KZkO2wCIe3m0MTKVr3Tt9B9NMZZsYxny8bvWvPwUGgZpDkE8gyAePjWCVu2IZ4LYw=="
 	>>> sourceContainer = "vhd6bdda0e88c88408299246c468784656546a"
 	>>> 
-	>>> restoreManageddiskFromVhd(vmName, resourceGroup, location, sourceStorageAccount, sourceSecretKey, sourceContainer)
+	>>> amaretto.amarettorestore.restoreManagedDiskFromVhd(vmName, resourceGroup, location, sourceStorageAccount, sourceSecretKey, sourceContainer)

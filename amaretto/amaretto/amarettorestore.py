@@ -434,7 +434,7 @@ def deleteUnmanagedDisk(vhdName, storageAccount, secretKey, container):
 	ifExists = False
 	# Check existing item
 	# Create show command
-	showCommand = "az storage blob show -c '{0}' --account-key '{1}' --account-name '{2}'  -n '{3}'".format(container, secretKey, storageAccount, vhdName)
+	showCommand = "az storage blob show -c '{0}' --account-key '{1}' --account-name '{2}' -n '{3}'".format(container, secretKey, storageAccount, vhdName)
 	# Execute show command
 	showResult = subprocess.check_output(showCommand, shell=True)
 	# Check result
@@ -454,7 +454,7 @@ def deleteUnmanagedDisk(vhdName, storageAccount, secretKey, container):
 		 # Start deletion
 		try:
 			# Create delete command
-			deleteCommand = "az storage blob delete -c '{0}' --account-key '{1}' --account-name '{2}'  -n '{3}'".format(container, secretKey, storageAccount, vhdName)
+			deleteCommand = "az storage blob delete -c '{0}' --account-key '{1}' --account-name '{2}' -n '{3}'".format(container, secretKey, storageAccount, vhdName)
 			# Execute delete command
 			deleteResult = subprocess.check_output(deleteCommand, shell=True)
 			# Check result"
