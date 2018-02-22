@@ -26,7 +26,7 @@ with open(path.join(here, 'LICENSE.txt'), encoding='utf-8') as l:
 
 
 setup(name='amaretto',
-	version='0.0.1.2',
+	version='0.0.2.0',
 	description='Azure management tools by the1bit.',
 	long_description=long_description + "\n" + license_description,
 	url='https://github.com/the1bit/amaretto/tree/master/amaretto',
@@ -43,12 +43,14 @@ setup(name='amaretto',
 		# Indicate who your project is intended for
 		'Intended Audience :: Developers',
 		'Topic :: Software Development :: Build Tools',
+		'Operating System :: POSIX :: Linux',
 
 		# Pick your license as you wish
 		'License :: OSI Approved :: MIT License',
 
 		# Specify the Python versions you support here. In particular, ensure
 		# that you indicate whether you support Python 2, Python 3 or both.
+		'Programming Language :: Python',
 		'Programming Language :: Python :: 2',
 		'Programming Language :: Python :: 2.7',
 		'Programming Language :: Python :: 3',
