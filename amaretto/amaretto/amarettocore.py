@@ -98,3 +98,20 @@ def defaultSubscription(subscriptionID):
 		return True
 	except:
 		return False
+
+# FUNCTION Get default subscription
+def getDefaultSubscription():
+	# init result
+	result = '{"error": "No default subscription. You have to login to Azure."}'
+	# Create command
+	bashcmd = "az account show"
+	# Execute command
+	try:
+		result = subprocess.check_output(bashcmd, shell=True)
+		# Convert to json
+		jResult = json.loads(result)
+		# Create result
+		result = '{ "environmentName": "%s", "subscriptionId": "%s", "subscriptionName": "%s", "userName": "%s" }' % (jResult["environmentName"], jResult["id"], jResult["name"], jResult["user"]["name"],)
+		return result
+	except:
+		return result

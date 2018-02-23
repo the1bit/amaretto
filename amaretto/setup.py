@@ -22,7 +22,7 @@ with open(path.join(here, 'LICENSE.txt'), encoding='utf-8') as l:
 
 
 ## Versin of the current package
-currentVersion = "0.0.2.4"
+currentVersion = "0.0.2.5"
 sys.stdout.write("ammaretto: " + currentVersion + '\n')
 
 
