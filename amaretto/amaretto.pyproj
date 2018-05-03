@@ -36,7 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="amarettocore.rst" />
+    <Content Include="amarettocore.md" />
     <Content Include="amarettostorage.rst" />
     <Content Include="amarettorestore.rst" />
     <Content Include="LICENSE.txt" />

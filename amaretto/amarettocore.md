@@ -23,9 +23,12 @@ Include module
 --------------
 
 Steps for include restore module
-	>>> import amaretto
-	>>> from amaretto import amarettocore
-	>>> amaretto.amarettocore.azureLogin()
+
+```python
+	import amaretto
+	from amaretto import amarettocore
+	amaretto.amarettocore.azureLogin()
+```
 
 
 Functions
@@ -39,8 +42,11 @@ Functions
 * Output: -
 * Note:
 	It does not set the default subscription (if you have more than 1 subscription for same account). For this operation you can use the *defaultSubscription* function.
-* Example: 
-	>>> amaretto.amarettocore.azureLogin()
+* Example:
+
+```python
+	amaretto.amarettocore.azureLogin()
+```
 
 
 **defaultSubscription(subscriptionID)**
@@ -51,8 +57,10 @@ Functions
 * Output: *True* if the operation is success and *False* if something went wrong.
 * Note:
 * Example: 
-	>>> amaretto.amarettocore.defaultSubscription("57a1gdff-e67c-5432-9876-gdh18j5j4677")	
 
+```python
+	amaretto.amarettocore.defaultSubscription("57a1gdff-e67c-5432-9876-gdh18j5j4677")	
+```
 **getDefaultSubscription()**
 
 * Description: 
@@ -61,4 +69,7 @@ Functions
 * Output: JSON wit envirinment name, subscription id, subscription name and username
 * Note:
 * Example: 
-	>>> amaretto.amarettocore.getDefaultSubscription()	
+
+```python
+	amaretto.amarettocore.getDefaultSubscription()	
+```
