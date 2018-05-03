@@ -41,6 +41,7 @@
     <Content Include="amarettorestore.rst" />
     <Content Include="LICENSE.txt" />
     <Content Include="MANIFEST.in" />
+    <Content Include="README.md" />
     <Content Include="README.rst" />
     <Content Include="setup.cfg" />
   </ItemGroup>
