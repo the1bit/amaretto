@@ -2,7 +2,7 @@
 AMArETTo - Azure MAnagEmenT by The1bit
 --------------------------------------
 
-Change log - version 0.0.2.8
+Change log - version 0.0.2.9
 ----------------------------
 
 * **Core** module: Contains functions for login to Azure and set default subscription
@@ -29,7 +29,6 @@ To use the tools you merely follow the following steps:
     import pip
     pip.main(['install', '--user', 'amaretto'])
     import amaretto
-    print amaretto.showMessage('Your message')
 ```
 
 (install without cache: pip install amaretto --no-cache-dir  )
