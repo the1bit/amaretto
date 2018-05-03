@@ -22,9 +22,12 @@ Include module
 --------------
 
 Steps for include restore module
-	>>> import amaretto
-	>>> from amaretto import amarettorestore
-	>>> amaretto.amarettorestore.storageUriFromCloud('AzureCloud')
+
+```python
+	import amaretto
+	from amaretto import amarettorestore
+	amaretto.amarettorestore.storageUriFromCloud('AzureCloud')
+```
 
 
 Functions
@@ -51,14 +54,17 @@ All steps are developed in this module for each and every restore steps such as 
 	* You have to use the following naming convenction for osdisk: *[vmname]-osdisk.vhd*
 	* You have to use the following naming convenction for datadisk: *[vmname]-datadisk-[diskid].vhd* (where the diskid represents the value of lun)
 * Example: 
-	>>> vmName = "thisismyserver-1"
-	>>> resourceGroup = "thisismyrg"
-	>>> location = "westeurope"
-	>>> storageAccount = "thisismystorage"
-	>>> secretKey = "d22j/rr+a7br7LW6KDKV8KZkO2wCIe3m0MTKVr3Tt9B9NMZZsYxny8bvWvPwUGgZpDkE8gyAePjWCVu2IZ4LYw=="
-	>>> sourceContainer = "vhd6bdda0e88c88408299246c468784656546a"
-	>>>
-	>>> amaretto.amarettorestore.restoreUnmanagedDiskFromVhd(vmName, resourceGroup, location, storageAccount, secretKey, sourceContainer)
+
+```python
+	vmName = "thisismyserver-1"
+	resourceGroup = "thisismyrg"
+	location = "westeurope"
+	storageAccount = "thisismystorage"
+	secretKey = "d22j/rr+a7br7LW6KDKV8KZkO2wCIe3m0MTKVr3Tt9B9NMZZsYxny8bvWvPwUGgZpDkE8gyAePjWCVu2IZ4LYw=="
+	sourceContainer = "vhd6bdda0e88c88408299246c468784656546a"
+	
+	amaretto.amarettorestore.restoreUnmanagedDiskFromVhd(vmName, resourceGroup, location, storageAccount, secretKey, sourceContainer)
+```
 
 
 **restoreManagedDiskFromVhd(vmName, resourceGroup, location, sourceStorageAccount, sourceSecretKey, sourceContainer, managedDiskAccountType = "Standard_LRS")**
@@ -80,11 +86,14 @@ All steps are developed in this module for each and every restore steps such as 
 	* You have to use the following naming convenction for osdisk: *[vmname]-osdisk*
 	* You have to use the following naming convenction for datadisk: *[vmname]-datadisk-[diskid]* (where the diskid represents the value of lun)
 * Example: 
-	>>> vmName = "thisismyserver-2"
-	>>> resourceGroup = "thisismyrg"
-	>>> location = "westeurope"
-	>>> sourceStorageAccount = "thisismystorage"
-	>>> sourceSecretKey = "d22j/rr+a7br7LW6KDKV8KZkO2wCIe3m0MTKVr3Tt9B9NMZZsYxny8bvWvPwUGgZpDkE8gyAePjWCVu2IZ4LYw=="
-	>>> sourceContainer = "vhd6bdda0e88c88408299246c468784656546a"
-	>>> 
-	>>> amaretto.amarettorestore.restoreManagedDiskFromVhd(vmName, resourceGroup, location, sourceStorageAccount, sourceSecretKey, sourceContainer)
+
+```python
+	vmName = "thisismyserver-2"
+	resourceGroup = "thisismyrg"
+	location = "westeurope"
+	sourceStorageAccount = "thisismystorage"
+	sourceSecretKey = "d22j/rr+a7br7LW6KDKV8KZkO2wCIe3m0MTKVr3Tt9B9NMZZsYxny8bvWvPwUGgZpDkE8gyAePjWCVu2IZ4LYw=="
+	sourceContainer = "vhd6bdda0e88c88408299246c468784656546a"
+	
+	amaretto.amarettorestore.restoreManagedDiskFromVhd(vmName, resourceGroup, location, sourceStorageAccount, sourceSecretKey, sourceContainer)
+```

@@ -2,7 +2,7 @@
 AMArETTo - Azure MAnagEmenT by The1bit
 --------------------------------------
 
-Change log - version 0.0.2.7
+Change log - version 0.0.2.8
 ----------------------------
 
 * **Core** module: Contains functions for login to Azure and set default subscription
@@ -42,7 +42,7 @@ Steps for include restore module
 	>>> from amaretto import amarettocore
 	>>> amaretto.amarettocore.azureLogin()
 
-You can find the detailed documentation in `amarettocore.rst <https://github.com/the1bit/amaretto/blob/master/amaretto/amarettocore.rst>`_ .
+You can find the detailed documentation in [amarettocore.md].
 
 
 Restore module
@@ -52,7 +52,7 @@ Steps for include restore module
 	>>> from amaretto import amarettorestore
 	>>> amaretto.amarettorestore.storageUriFromCloud('AzureCloud')
 
-You can find the detailed documentation in `amarettorestore.rst <https://github.com/the1bit/amaretto/blob/master/amaretto/amarettorestore.rst>`_ .
+You can find the detailed documentation in [amarettorestore.md].
 
 
 Storage module
@@ -62,7 +62,11 @@ Steps for include storage module
 	>>> from amaretto import amarettostorage
 	>>> amaretto.amarettostorage.uploadAllFiles(fileVersion = '1.0.0.0', storageaccountName = <your storage account name>, sasToken = <sasToken for your storage account>, storageKey = <storageKey for your storage account>, filePath = <local path of flies>, modificationLimitMin = <1440 means you upload files which are older than one day>)
 
-You can find the detailed documentation in `amarettostorage.rst <https://github.com/the1bit/amaretto/blob/master/amaretto/amarettostorage.rst>`_ .
+You can find the detailed documentation in [amarettostorage.md].
 
 
 Please read the license related information.
+
+[amarettocore.md]: https://github.com/the1bit/amaretto/blob/master/amaretto/amarettocore.md
+[amarettorestore.md]: https://github.com/the1bit/amaretto/blob/master/amaretto/amarettorestore.md
+[amarettostorage.md]: https://github.com/the1bit/amaretto/blob/master/amaretto/amarettostorage.md

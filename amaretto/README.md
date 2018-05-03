@@ -24,10 +24,13 @@ Basic install
 -------------
 
 To use the tools you merely follow the following steps:
-    >>> import pip
-    >>> pip.main(['install', '--user', 'amaretto'])
-    >>> import amaretto
-    >>> print amaretto.showMessage('Your message')
+
+```python
+    import pip
+    pip.main(['install', '--user', 'amaretto'])
+    import amaretto
+    print amaretto.showMessage('Your message')
+```
 
 (install without cache: pip install amaretto --no-cache-dir  )
 
@@ -38,9 +41,12 @@ To use the tools you merely follow the following steps:
 Core module
 -----------
 Steps for include restore module
-	>>> import amaretto
-	>>> from amaretto import amarettocore
-	>>> amaretto.amarettocore.azureLogin()
+
+```python
+	import amaretto
+	from amaretto import amarettocore
+	amaretto.amarettocore.azureLogin()
+```
 
 You can find the detailed documentation in [amarettocore.md](https://github.com/the1bit/amaretto/blob/master/amaretto/amarettocore.md) .
 
@@ -48,9 +54,12 @@ You can find the detailed documentation in [amarettocore.md](https://github.com/
 Restore module
 --------------
 Steps for include restore module
-	>>> import amaretto
-	>>> from amaretto import amarettorestore
-	>>> amaretto.amarettorestore.storageUriFromCloud('AzureCloud')
+
+```python
+	import amaretto
+	from amaretto import amarettorestore
+	amaretto.amarettorestore.storageUriFromCloud('AzureCloud')
+```
 
 You can find the detailed documentation in [amarettorestore.md](https://github.com/the1bit/amaretto/blob/master/amaretto/amarettorestore.md) .
 
@@ -58,9 +67,12 @@ You can find the detailed documentation in [amarettorestore.md](https://github.c
 Storage module
 --------------
 Steps for include storage module
-	>>> import amaretto
-	>>> from amaretto import amarettostorage
-	>>> amaretto.amarettostorage.uploadAllFiles(fileVersion = '1.0.0.0', storageaccountName = <your storage account name>, sasToken = <sasToken for your storage account>, storageKey = <storageKey for your storage account>, filePath = <local path of flies>, modificationLimitMin = <1440 means you upload files which are older than one day>)
+
+```python
+	import amaretto
+	from amaretto import amarettostorage
+	amaretto.amarettostorage.uploadAllFiles(fileVersion = '1.0.0.0', storageaccountName = <your storage account name>, sasToken = <sasToken for your storage account>, storageKey = <storageKey for your storage account>, filePath = <local path of flies>, modificationLimitMin = <1440 means you upload files which are older than one day>)
+```
 
 You can find the detailed documentation in [amarettostorage.md](https://github.com/the1bit/amaretto/blob/master/amaretto/amarettostorage.md) .
 

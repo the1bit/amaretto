@@ -13,7 +13,7 @@ import sys
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 	long_description = f.read()
 
 # Get the license description from the license file
@@ -22,7 +22,7 @@ with open(path.join(here, 'LICENSE.txt'), encoding='utf-8') as l:
 
 
 ## Versin of the current package
-currentVersion = "0.0.2.7"
+currentVersion = "0.0.2.8"
 sys.stdout.write("ammaretto: " + currentVersion + '\n')
 
 
