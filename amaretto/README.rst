@@ -2,7 +2,7 @@
 AMArETTo - Azure MAnagEmenT by The1bit
 --------------------------------------
 
-Change log - version 0.0.2.6
+Change log - version 0.0.2.7
 ----------------------------
 
 * **Core** module: Contains functions for login to Azure and set default subscription
