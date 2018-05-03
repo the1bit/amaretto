@@ -2,11 +2,12 @@
 AMArETTo - Azure MAnagEmenT by The1bit
 --------------------------------------
 
-Change log - version 0.0.2.5
+Change log - version 0.0.2.6
 ----------------------------
 
 * **Core** module: Contains functions for login to Azure and set default subscription
 * **Restore** module: Contains full support of unmanaged and managed disk based VMs' **DISK** restore.
+* **Storage** module: Can upload files to a storage account and store them according to their versions.
 
 Requirements
 ------------
@@ -52,6 +53,16 @@ Steps for include restore module
 	>>> amaretto.amarettorestore.storageUriFromCloud('AzureCloud')
 
 You can find the detailed documentation in `amarettorestore.rst <https://github.com/the1bit/amaretto/blob/master/amaretto/amarettorestore.rst>`_ .
+
+
+Storage module
+--------------
+Steps for include storage module
+	>>> import amaretto
+	>>> from amaretto import amarettostorage
+	>>> amaretto.amarettostorage.uploadAllFiles(fileVersion = '1.0.0.0', storageaccountName = <your storage account name>, sasToken = <sasToken for your storage account>, storageKey = <storageKey for your storage account>, filePath = <local path of flies>, modificationLimitMin = <1440 means you upload files which are older than one day>)
+
+You can find the detailed documentation in `amarettorestore.rst <https://github.com/the1bit/amaretto/blob/master/amaretto/amarettostorage.rst>`_ .
 
 
 Please read the license related information.

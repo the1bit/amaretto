@@ -1,0 +1,59 @@
+AmarettoStorage
+---------------
+
+Change log - version 1.0.1.0
+----------------------------
+
+* Can upload files to a storage account.
+* When you upload a new version of a file it moves to an other directory according its version number.
+* Known issue:
+	* There is an issue in Azure-Cli since 2.0.30 - you cannot copy blobs inside storage account only with SAS token. `More information <http://www.the1bit.hu/technical-thursday-bug-in-azure-cli-2-0-30/>`_
+
+Requirements
+------------
+
+* Linux OS
+
+You have to install before the first usage the followings:
+
+* Python (2.7 or 3.4)
+* Azure-Cli 2.0
+
+
+Include module
+--------------
+
+Steps for include storage module
+	>>> import amaretto
+	>>> from amaretto import amarettostorage
+	>>> amaretto.amarettostorage.uploadAllFiles(fileVersion = '1.0.0.0', storageaccountName = <your storage account name>, sasToken = <sasToken for your storage account>, storageKey = <storageKey for your storage account>, filePath = <local path of flies>, modificationLimitMin = <1440 means you upload files which are older than one day>)
+
+
+Functions
+---------
+All steps are developed in this module for each and every copy, upload, delete, manage version steps. Now I write down here how you can upload your files to Azure storage account.
+
+**uploadAllFiles(fileVersion , storageaccountName, sasToken, storageKey = "none", releaseVersion = "latest", filePath = "./files/", containerName = "files", modificationLimitMin = "30")**
+
+* Description: 
+	Helps you to upload your files from a directory to your storage account. It uses version number during upload which determines the filesversions when a new version is available.
+* Input: 
+	* fileVersion: version of files
+	* storageaccountName: Your storage account name in Azure
+	* sasToken: SAS token which belongs to storage account
+	* storageKey: SAS token which belongs to storage account
+	* releaseVersion: Your files release version. Default: latest (in this "directory" you can find your files in Azure)
+	* filePath: Local path of files
+	* containerName: Storage account container name where you would like to upload your files. (It can be used for environemnt separation such as prod, dev)
+	* modificationLimitMin: Value in minutes. The module skips that files which is younger than this range. 1440 means you upload files which are older than one day.
+
+* Output: *Status* and *Result* in JSON format.
+* Example: 
+	>>> fileVersion = "1.0.0.0"
+	>>> storageaccountName = "thisismystorage"
+	>>> sasToken = "?sv=2017-07-29&ss=b&srt=sco&sp=rwdlac&se=2018-05-31T16:09:48Z&st=2018-05-03T08:59:48Z&spr=https&sig=dp7p3f9G%2B4hvEEoTVuiuIpPAMKssFh2r7AaapyDTl2E%4B"
+	>>> storageKey = "d22j/rr+a7br7LW6KDKV8KZkO2wCIe3m0MTKVr3Tt9B9NMZZsYxny8bvWvPwUGgZpDkE8gyAePjWCVu2IZ4LYw=="
+	>>> filePath = "./upload/"
+	>>> sourceContainer = "vhd6bdda0e88c88408299246c468784656546a"
+	>>> modificationLimitMin = "1440"
+	>>> amaretto.amarettostorage.uploadAllFiles(fileVersion = fileVersion, storageaccountName = storageaccountName, sasToken = sasToken, storageKey = storageKey, filePath = filePath, modificationLimitMin = modificationLimitMin)
