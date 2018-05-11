@@ -1,6 +1,13 @@
 AmarettoStorage
 ---------------
 
+Change log - version 1.0.2.0
+----------------------------
+
+* Generate SAS Token for StorageAccount
+* SAS token length check has been modified
+
+
 Change log - version 1.0.1.0
 ----------------------------
 
@@ -60,4 +67,43 @@ All steps are developed in this module for each and every copy, upload, delete, 
 	modificationLimitMin = "1440"
 
 	amaretto.amarettostorage.uploadAllFiles(fileVersion = fileVersion, storageaccountName = storageaccountName, sasToken = sasToken, filePath = filePath, modificationLimitMin = modificationLimitMin)
+```
+
+**getStorageKeys(storageAccountName, operation = "live")**
+
+* Description: 
+	You can list both storage account keys to a storage account. (If you have access on that storage account)
+* Input: 
+	* storageaccountName: Your storage account name in Azure
+	* operation: Default value is *live*. If you use different value you can test the function with Python unittest module. In test runing it won't list the storage account keys.
+
+
+* Output: *Status* and *Result* in JSON format. Result contains both keys.
+* Example: 
+
+```python
+	storageaccountName = "thisismystorage"
+
+	amaretto.amarettostorage.getStorageKeys(storageaccountName = storageaccountName)
+```
+
+**newSASToken(storageAccountName, storageAccountKey, expirationInDays = "180", operation = "live"):**
+
+* Description: 
+	You can generate SAS Token for your storage account if you have enough access on that.
+* Input: 
+	* storageaccountName: Your storage account name in Azure
+	* storageAccountKey: Key for storage account
+	* expirationInDays: Expiration days of SAS Token from now. This is an optional paramaeter. If you don't define in parameterlist it will be 180 days.
+	* operation: Default value is *live*. If you use different value you can test the function with Python unittest module. In test runing it won't list the storage account keys.
+
+
+* Output: *Status* and *Result* in JSON format. Result contains the generated SAS token.
+* Example: 
+
+```python
+	storageaccountName = "thisismystorage"
+	storageAccountKey = "d22j/rr+a7br7LW6KDKV8KZkO2wCIe3m0MTKVr3Tt9B9NMZZsYxny8bvWvPwUGgZpDkE8gyAePjWCVu2IZ4LYw=="
+
+	amaretto.amarettostorage.newSASToken(storageaccountName = storageaccountName, storageAccountKey = storageAccountKey)
 ```

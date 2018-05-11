@@ -3,8 +3,8 @@
 """ Module: storageazure
 	Function collection for StorageAccount related management
 	
-	Version: 1.0.1.0
-	Last modified date: 03.05.2018.
+	Version: 1.0.2.0
+	Last modified date: 10.05.2018.
 
 	Usage:
 	from amarettostorage import *
@@ -23,7 +23,7 @@ import datetime
 # FUNCTION Create container for files
 def createContainer(containerName, storageaccountName, sasToken, timeOut = 40):
 	# Check parameters
-	if len(containerName) > 0 and len(storageaccountName) > 3 and len(sasToken) > 120:
+	if len(containerName) > 0 and len(storageaccountName) > 3 and len(sasToken) > 80:
 		# Create command for creation
 		containercmd = 'az storage container create --account-name {0} --sas-token "{1}" -n "{2}"'.format(storageaccountName, sasToken, containerName)
 		# Execute command
@@ -45,7 +45,7 @@ def createContainer(containerName, storageaccountName, sasToken, timeOut = 40):
 # FUNCTION Upload file to storage account
 def uploadFile(fileName, fileVersion , storageaccountName, sasToken, storageKey = "none", releaseVersion = "latest", filePath = "./files/", containerName = "files", modificationLimitMin = "30"):
 	# Check parameters
-	if len(fileName) > 0 and len(storageaccountName) > 3 and len(sasToken) > 120 and len(fileVersion) > 0:
+	if len(fileName) > 0 and len(storageaccountName) > 3 and len(sasToken) > 80 and len(fileVersion) > 0:
 		# Create container for files
 		containerResult = json.loads(createContainer(containerName, storageaccountName, sasToken))
 		# Check container creation result
@@ -111,7 +111,7 @@ def uploadFile(fileName, fileVersion , storageaccountName, sasToken, storageKey 
 # FUNCTION Delete file from path
 def delFile(fileName, storageaccountName, sasToken, currentLocation = "latest", containerName = "files"):
 	# Check parameters
-	if len(fileName) > 0 and len(storageaccountName) > 3 and len(sasToken) > 120:
+	if len(fileName) > 0 and len(storageaccountName) > 3 and len(sasToken) > 80:
 		# Create delete command
 		delcmd = 'az storage blob delete --account-name {0} --sas-token "{1}" -c "{2}" -n "{4}/{3}"'.format(storageaccountName, sasToken, containerName, fileName, currentLocation)
 		# Execute command
@@ -212,7 +212,7 @@ def copyFile(fileName, storageaccountName, sasToken = "none", storageKey= "none"
 # FUNCTION Move file from from current location to right releaee versio 
 def moveFile(fileName, storageaccountName, sasToken, storageKey= "none", currentLocation = "latest", containerName = "files"):
 	# Check parameters
-	if len(fileName) > 0 and len(storageaccountName) > 3 and len(sasToken) > 120:
+	if len(fileName) > 0 and len(storageaccountName) > 3 and len(sasToken) > 80:
 		# Check whether the file exist or not
 		## Create related command
 		existcmd = 'az storage blob exists --account-name {0} --sas-token "{1}" -c "{2}" -n "{4}/{3}"'.format(storageaccountName, sasToken, containerName, fileName, currentLocation)
@@ -259,7 +259,7 @@ def moveFile(fileName, storageaccountName, sasToken, storageKey= "none", current
 # FUNCTION Move all files to their right location
 def moveAllFiles(storageaccountName, sasToken, storageKey = "none", currentLocation = "latest", containerName = "files"):
 	# Check parameters
-	if len(storageaccountName) > 3 and len(sasToken) > 120:
+	if len(storageaccountName) > 3 and len(sasToken) > 80:
 		# List all files in current location
 		## Create command
 		listcmd = 'az storage blob list --account-name {0} --sas-token "{1}" -c "{2}" --prefix "{3}/"'.format(storageaccountName, sasToken, containerName, currentLocation)
@@ -315,7 +315,7 @@ def uploadAllFiles(fileVersion , storageaccountName, sasToken, storageKey = "non
 	from os import listdir
 	from os.path import isfile, join
 	# Check parameters
-	if len(storageaccountName) > 3 and len(sasToken) > 120 and len(fileVersion) > 0:
+	if len(storageaccountName) > 3 and len(sasToken) > 80 and len(fileVersion) > 0:
 		# List all files from path
 		listFiles = [f for f in listdir(filePath) if isfile(join(filePath, f))]
 		# Check number of items
@@ -386,3 +386,91 @@ def getDateDiff(localFileDateTime, azureFileDateTime):
 	except:
 		return '{"status":"error", "result":"Datetime parsing error"}'
 
+
+# FUNCTION Get Storage account keys
+def getStorageKeys(storageAccountName, operation = "live"):
+	# Check parameters
+	if len(storageAccountName) > 0:
+		# Get resourcegroup for storageaccount
+		## JSON Part
+		jsonPart = "[?contains(name,'%s')].{name:name,resourceGroup:resourceGroup}" % (storageAccountName)
+		## Create command
+		rgcmd = ' az storage account list --query "%s"' % (jsonPart)
+		rgResult = ""
+		# Execute command
+		try:
+			rgResult = subprocess.check_output(rgcmd, shell=True)
+		except:
+			# Error handling
+			return '{"status":"error", "result":"An error has occurred during resourcegroup listing"}' 
+		
+		# Check resourcegroup result 
+		if len(rgResult) > 30:
+			# Convert resourcegroup result to JSON
+			rgJson = ""
+			try:
+				rgJson = json.loads(rgResult)
+			except:
+				# Error handling
+				return '{"status":"error", "result":"An error has occurred during resourcegroup result converting to JSON. Input is not valid JSON format."}' 
+
+			# Check JSON convert
+			if len(rgJson) == 1:
+				# Get resource group name
+				storageaccountResourceGroup = rgJson[0]["resourceGroup"]
+				# Create command for listing keys
+				keyscmd = 'az storage account keys list -g "{0}" -n "{1}"'.format(storageaccountResourceGroup, storageAccountName)
+				# Execute command
+				try:
+					keysResult = subprocess.check_output(keyscmd, shell=True)
+					# Check operation
+					if operation == "live":
+						# Normal operation
+						return '{"status": "success", "result": %s}' % (keysResult)
+					else:
+						# unit test
+						return '{"status": "success", "result": "OK"}'
+				except:
+					# Error handling
+					return '{"status": "error", "result": "something went wrong during listing keys. Please check the input parameters and whether you are logged in to Azure or not."}'
+			else:
+				# Error handling
+				return '{"status":"error", "result":"Convenrted resource group Json result is empty."}'
+		else:
+			# Error handling
+			return '{"status":"error", "result":"No resource group was found for %s. Please check the input parameters and whether you are logged in to Azure or not."}'  % (storageAccountName)
+	else:
+		# Error handling
+		return '{"status": "error", "result": "Something went wrong. Please check the input parameters and whether you are logged in to Azure or not."}'
+
+			
+# Function Create SAS token
+def newSASToken(storageAccountName, storageAccountKey, expirationInDays = "180", operation = "live"):
+	# Import modules
+	from datetime import datetime  
+	from datetime import timedelta  
+
+	# Check parameters
+	if len(storageAccountName) > 0 and len(storageAccountKey) > 80 and int(expirationInDays) > 0:
+		# Init values
+		expirationDate = datetime.now() + timedelta(days=int(expirationInDays))  
+		# Create command
+		gencmd = 'az storage account generate-sas --account-name "{0}"  --account-key "{1}" --resource-types co --services b --permissions acdrw --expiry {2}-{3}-{4} --https-only'.format(storageAccountName, storageAccountKey, expirationDate.year,expirationDate.month,expirationDate.day)
+		# Execute command
+		try:
+			genResult = subprocess.check_output(gencmd, shell=True)
+			# Check operation
+			if operation == "live":
+				# Normal operation
+				return '{"status": "success", "result": "%s"}' % (genResult)
+			else:
+				# unit test
+				return '{"status": "success", "result": "OK"}'
+		except:
+			# Error handling
+			return '{"status": "error", "result": "Something went wrong during SAS token creation. Please check the input parameters and whether you are logged in to Azure or not."}'
+	else:
+		# Error handling
+		return '{"status": "error", "result": "Something went wrong. Please check the input parameters and whether you are logged in to Azure or not."}'
+		
+		

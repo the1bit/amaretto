@@ -2,12 +2,20 @@
 AMArETTo - Azure MAnagEmenT by The1bit
 --------------------------------------
 
+Change log - version 0.0.2.10
+-----------------------------
+
+* **Storage**
+	* Generate SAS Token for StorageAccount
+	* SAS token length check has been modified
+
 Change log - version 0.0.2.9
-----------------------------
+-----------------------------
 
 * **Core** module: Contains functions for login to Azure and set default subscription
 * **Restore** module: Contains full support of unmanaged and managed disk based VMs' **DISK** restore.
 * **Storage** module: Can upload files to a storage account and store them according to their versions.
+
 
 Requirements
 ------------
