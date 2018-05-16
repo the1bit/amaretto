@@ -191,7 +191,7 @@ def copyFile(fileName, storageaccountName, sasToken = "none", storageKey= "none"
 			try:
 				commandResult = subprocess.check_output(copycmd, shell=True)
 				# Result is OK
-				result = '{"status": "success", "result": %s}' % (commandResult)
+				result = '{"status": "success", "result": %s, "location": "%s"}' % (commandResult, fileData["version"])
 				return result
 			except:
 				# Error handling

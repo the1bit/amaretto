@@ -2,6 +2,11 @@
 AMArETTo - Azure MAnagEmenT by The1bit
 --------------------------------------
 
+Change log - version 0.0.2.11
+-----------------------------
+* **Storage**
+	* Bugfix in copyFile function. SAS token related copy return value expandation.
+
 Change log - version 0.0.2.10
 -----------------------------
 
