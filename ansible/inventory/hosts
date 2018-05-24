@@ -1,0 +1,9 @@
+[vnet]
+vnet
+
+
+[vms]
+cust-01 vm_fe_ip="79.0.0.11"
+cust-02 vm_fe_ip="79.0.0.12"
+cust-03 vm_fe_ip="79.0.0.13"
+cust-04 vm_fe_ip="79.0.0.14"

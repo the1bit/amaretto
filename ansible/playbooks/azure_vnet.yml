@@ -1,0 +1,25 @@
+- name: Create VirtualNetwork
+  hosts: vnet
+  connection: local
+  vars:
+   rgName: "{{env_id}}-rg-{{resource_group}}"
+   vnet_name: "{{env_id}}-{{inventory_hostname}}"
+  tasks:
+  - name: Create resource Group - {{env_id}}-rg-{{resource_group}}
+    shell: az group create -n "{{rgName}}" --location "{{location}}"
+  - name: Create virtual network - {{vnet_name}}
+    azure_rm_virtualnetwork:
+      resource_group: "{{rgName}}"
+      name: "{{vnet_name}}"
+      address_prefixes: "{{vnet_address_prefix}}"
+  - name: Add FE subnet {{vnet_name}}-subnet-fe
+    azure_rm_subnet:
+      resource_group: "{{rgName}}"
+      name: "{{vnet_name}}-subnet-fe"
+      address_prefix: "{{vnet_fe_subnet_address_prefix}}"
+      virtual_network: "{{vnet_name}}"
+  - name: Create Network Security Group - FE - {{vnet_name}}-nsg-fe
+    azure_rm_securitygroup:
+      resource_group: "{{rgName}}"
+      name: "{{vnet_name}}-nsg-fe"
+

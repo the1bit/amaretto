@@ -1,0 +1,19 @@
+- name: Create Network
+  hosts: vms
+  connection: local
+  vars:
+    rgName: "{{env_id}}-rg-{{resource_group}}"
+    vnet_name: "{{env_id}}-vnet"
+  tasks:
+  - name: Create virtual network inteface card - FE
+    azure_rm_networkinterface:
+      resource_group: "{{rgName}}"
+      name: "{{env_id}}-{{inventory_hostname}}-nic-fe"
+      virtual_network: "{{vnet_name}}"
+      subnet: "{{vnet_name}}-subnet-fe"
+      security_group: "{{vnet_name}}-nsg-fe"
+      ip_configurations:
+        - name: ipconfig1
+          private_ip_allocation_method: Static
+          private_ip_address: "{{vm_fe_ip}}"
+          primary: true
