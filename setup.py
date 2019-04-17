@@ -1,5 +1,5 @@
 """Setuptools for amarett.
-	AMArETTo - Azure MAnagEmenT by The1bit
+	AMArETTo - Azure MAnagEmenT by the1bit
 """
 
 # Always prefer setuptools over distutils
@@ -13,16 +13,16 @@ import sys
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+with open(path.join(here, 'amaretto/README.rst'), encoding='utf-8') as f:
 	long_description = f.read()
 
 # Get the license description from the license file
-with open(path.join(here, 'LICENSE.txt'), encoding='utf-8') as l:
+with open(path.join(here, 'amaretto/LICENSE.txt'), encoding='utf-8') as l:
 	license_description = l.read()
 
 
 ## Versin of the current package
-currentVersion = "0.0.2.11"
+currentVersion = "0.1.0.0"
 sys.stdout.write("ammaretto: " + currentVersion + '\n')
 
 
@@ -31,7 +31,7 @@ sys.stdout.write("ammaretto: " + currentVersion + '\n')
 
 setup(name='amaretto',
 	version=currentVersion,
-	description='Azure management tools by the1bit.',
+	description='Azure management tools by the1bit',
 	long_description=long_description + "\n" + license_description,
 	url='https://github.com/the1bit/amaretto/tree/master/amaretto',
 	author='Tibor Kiss',
